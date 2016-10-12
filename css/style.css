@@ -1,0 +1,16 @@
+.navbar-brand {
+	max-width: 100px;
+	padding: 6px;
+	margin: 0px;
+	margin-right: 15px;
+}
+
+footer {
+	margin-top: 20px;
+	padding: 40px 0;
+}
+
+.search-filter{
+	margin-top: 10px;
+	margin-bottom: 30px;
+}

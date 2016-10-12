@@ -1,0 +1,68 @@
+<table ng-table="vm.tableParams" class="table" show-filter="true">
+    <tr ng-repeat="film in $data | orderBy: '+episode_id'">
+    	
+        <td title="'Episode'" filter="{ episode_id: 'number'}" sortable="'episode_id'">
+            {{film.episode_id}}
+        </td>
+        <td title="'Title'" filter="{ title: 'text'}" sortable="'title'">
+            <a ng-click="showFilm(film)" title="{{film.title}}">{{film.title}}</a>
+        </td>
+        <!--td title="'Opening Crawl'" filter="{ opening_crawl: 'text'}" sortable="'opening_crawl'">
+        	{{film.opening_crawl}}
+        </td-->
+        <td title="'Director'" filter="{ director: 'text'}" sortable="'director'">
+            {{film.director}}
+        </td>
+        <td title="'Release Date'" filter="{ release_date: 'text'}" sortable="'release_date'">
+            {{film.release_date | date:'MM-dd-yyyy'}}
+        </td>        
+    </tr>
+</table>
+
+<script type="text/ng-template" id="myModalItemContent.html">
+    <div class="modal-header">
+        <button type="button" class="close" ng-click="cancel()"><span aria-hidden="true">&times;</span></button>
+        <h3 class="modal-title">Star Wars <small>{{ film.title }}</small></h3>
+    </div>
+    <div class="modal-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img class="img-responsive" src="/img/episode_{{ film.episode_id }}.jpg" alt="{{ film.title }}">
+            </div>
+            <div class="col-md-8">
+                <dl>
+                    <dt>Title</dt>
+                    <dd>{{ film.title }}</dd>
+
+                    <dt>Episode</dt>
+                    <dd>{{ film.episode_id }}</dd>
+
+                    <dt>Director</dt>
+                    <dd>{{ film.director }}</dd>
+
+                    <dt>Producer</dt>
+                    <dd>{{ film.producer }}</dd>
+
+                    <dt>Release Date</dt>
+                    <dd>{{ film.release_date }}</dd>
+
+                    <dt>Opening Crawl</dt>
+                    <dd>{{ film.opening_crawl }}</dd>
+
+                    <dt>Characters</dt>
+                    <dd>{{ film.characters.length }}</dd>
+
+                    <dt>Planets</dt>
+                    <dd>{{ film.planets.length }}</dd>
+
+                    <dt>Starships</dt>
+                    <dd>{{ film.starships.length }}</dd>
+                </dl>
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-link" type="button" ng-click="cancel()">Cancel</button>
+        <button class="btn btn-primary" type="button" ng-click="ok()">OK</button>
+    </div>
+</script>
